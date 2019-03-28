@@ -1,5 +1,7 @@
 //================================================
-// YOUR NAME GOES HERE <-----------------  
+// Joseph Karch
+// Programming II - Assignment #6
+// March 25, 2019
 //================================================
 #include <iostream>
 #include <fstream>
@@ -15,6 +17,8 @@ using namespace sf;
 // add code, you shouldn't need to add any logic to main to satisfy
 // the requirements of this programming assignment
 
+
+
 int main()
 {
 	const int WINDOW_WIDTH = 800;
@@ -29,6 +33,17 @@ int main()
 	DrawingUI   drawingUI(Vector2f(200, 50));
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
+	fstream file;
+	file.open("shapes.bin", ios::in | ios::binary);
+
+	if (file)
+	{
+		settingsMgr.loadData(file);
+		shapeMgr.inputFile(file);
+	}
+
+	file.close();
+	
 
 	while (window.isOpen()) 
 	{
@@ -38,7 +53,12 @@ int main()
 			if (event.type == Event::Closed)
 			{
 				window.close();
-				// ****** Add code here to write all data to shapes file
+				fstream file1;
+				file1.open("shapes.bin", ios::out | ios::binary);
+				settingsMgr.saveData(file1);
+				shapeMgr.outputFile(file1);
+				file1.close();
+
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{
@@ -59,7 +79,6 @@ int main()
 				}
 			}
 		}
-
 		// The remainder of the body of the loop draws one frame of the animation
 		window.clear();
 
@@ -76,3 +95,4 @@ int main()
 
 	return 0;
 }
+

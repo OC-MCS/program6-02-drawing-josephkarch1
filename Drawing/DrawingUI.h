@@ -12,17 +12,51 @@ class DrawingUI
 private:
 
 public:
+	RectangleShape outerBorder;
+	RectangleShape leftBorder;
+
 	DrawingUI(Vector2f p)
 	{
+
 	}
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
+		// Draw outter border
+		Vector2f sqPos2(10, 10);
+		outerBorder.setPosition(sqPos2);
+		outerBorder.setOutlineColor(Color::White);
+		outerBorder.setOutlineThickness(3);
+		outerBorder.setSize(Vector2f(780, 580));
+		outerBorder.setFillColor(Color::Transparent);
+		win.draw(outerBorder);
+
+		// Draw left border for settings menu
+		Vector2f sqPos3(10, 10);
+		leftBorder.setPosition(sqPos3);
+		leftBorder.setOutlineColor(Color::White);
+		leftBorder.setOutlineThickness(3);
+		leftBorder.setSize(Vector2f(250, 580));
+		leftBorder.setFillColor(Color::Transparent);
+		win.draw(leftBorder);
+
+		for (int x = 0; x < mgr->shapeHolder.size(); x++)
+		{
+			mgr->shapeHolder[x]->draw(win);
+		}
 	}
 	
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
-		return false; // just to make it compile
+		if (mousePos.x >= 260 && mousePos.x <= 750 && mousePos.y >= 11 && mousePos.y <= 550)
+		{
+			return true;
+		}
+		else
+		{
+			return false; 
+		}
+		
 	}
 
 };
