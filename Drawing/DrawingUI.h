@@ -44,9 +44,10 @@ public:
 		leftBorder.setFillColor(Color::Transparent);
 		win.draw(leftBorder);
 
-		for (int x = 0; x < mgr->shapeHolder.size(); x++)
+		for (int x = 0; x < mgr->getShapeHolderSize(); x++)
 		{
-			mgr->shapeHolder[x]->draw(win);
+			
+			mgr->getShapeHolderItem(x)->draw(win);
 		}
 	}
 	

@@ -12,12 +12,39 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-
-	
+	vector <DrawingShape*> shapeHolder; // this is the vector that holds all the DrawingShapes	
 
 public:	
-	
-vector <DrawingShape*> shapeHolder; // this is the vector that holds all the DrawingShapes
+
+
+//================================================================================
+// getShapeHolderSize: returns the size of the shapeHolder vector
+// parameters: N/A
+// return type: temp
+//================================================================================
+
+	int getShapeHolderSize()
+	{
+		int temp = 0;
+
+		temp = shapeHolder.size();
+
+		return temp;
+	}
+
+//================================================================================
+// getShapeHolderItem: returns an item in shapeHolder
+// parameters: int
+// return type: DrawingShape*
+//================================================================================
+	DrawingShape* getShapeHolderItem(int x)
+	{
+		DrawingShape* temp;
+
+		temp = shapeHolder[x];
+
+		return temp;
+	}
 
 //================================================================================
 // addShape: recieves Vector2f, ShapeEnum, and Color. Then it adds a DrawingShape to 
@@ -25,7 +52,6 @@ vector <DrawingShape*> shapeHolder; // this is the vector that holds all the Dra
 // parameters: Vector2f, ShapeEnum and Color
 // return type: void
 //================================================================================
-
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		if (whichShape == CIRCLE)
