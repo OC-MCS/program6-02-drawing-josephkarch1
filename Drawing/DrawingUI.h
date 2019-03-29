@@ -10,16 +10,20 @@ using namespace sf;
 class DrawingUI
 {
 private:
-
+	RectangleShape outerBorder;		// drawingShape which provides the borders for the entire program UI
+	RectangleShape leftBorder;		// drawingShape which divides the left and right areas of the UI into settings and drawing canvas
 public:
-	RectangleShape outerBorder;
-	RectangleShape leftBorder;
 
 	DrawingUI(Vector2f p)
 	{
 
 	}
 
+//================================================================================
+// draw: this draws the drawing canvas, the shapes on the canvas, and the borders around it
+// parameters: renderWindow, ShapeMgr*
+// return type: void
+//================================================================================
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		// Draw outter border
@@ -46,6 +50,11 @@ public:
 		}
 	}
 	
+//================================================================================
+// isMouseInCanvas: this function checks to see if the mouse is inside the drawing canvas
+// parameters: Vector2f
+// return type: bool
+//================================================================================
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
 		if (mousePos.x >= 260 && mousePos.x <= 750 && mousePos.y >= 11 && mousePos.y <= 550)

@@ -22,8 +22,6 @@ private:
 public:
 	// all the buttons and borders are here
 
-
-
 	SettingsUI(SettingsMgr *mgr)
 	{
 		settingsMGR = mgr;
@@ -68,7 +66,13 @@ public:
 		circleBtn.setFillColor(Color::Transparent);
 	}
 
-
+//================================================================================
+// handleMouseUp: if the mouse is clicked on a button, this controls what happens
+// if the coords of the mouse are inside a button, it saves that information and changes
+// the transparency of the button to signal that is is "pushed".
+// parameters: vector2f
+// return type: void
+//================================================================================
 	void handleMouseUp(Vector2f mouse)
 	{
 		if (blueBtn.getGlobalBounds().contains(mouse))
@@ -115,6 +119,12 @@ public:
 		}
 	}
 
+//================================================================================
+// draw: this draws the settings window.  It draws the color buttons and the shape 
+// selection buttons.
+// parameters: RenderWindow
+// return type: void
+//================================================================================
 	void draw(RenderWindow& win)
 	{
 		if (settingsMGR->getCurColor() == Color::Blue)
@@ -141,7 +151,6 @@ public:
 		{
 			circleBtn.setFillColor(Color::White);
 		}
-
 
 		// first have to load font
 		Font font;
@@ -174,6 +183,11 @@ public:
 
 };
 
+//================================================================================
+// die: this kills the process if text labels are unable to be drawn
+// parameters: string
+// return type: void
+//================================================================================
 void die(string msg)
 {
 	cout << msg << endl;

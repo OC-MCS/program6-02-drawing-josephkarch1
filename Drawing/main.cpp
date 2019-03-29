@@ -27,10 +27,11 @@ int main()
 	RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Drawing");
 	window.setFramerateLimit(60);
 
-	SettingsMgr settingsMgr(Color::Blue, ShapeEnum::CIRCLE);
-	SettingsUI  settingsUI(&settingsMgr); 
-	ShapeMgr    shapeMgr;
-	DrawingUI   drawingUI(Vector2f(200, 50));
+	// create the classes to control the different aspects of the program
+	SettingsMgr settingsMgr(Color::Blue, ShapeEnum::CIRCLE);	// holds the settings of the UI
+	SettingsUI  settingsUI(&settingsMgr);						// draws the UI settings
+	ShapeMgr    shapeMgr;										// holds the data for the shapes that ar drawn
+	DrawingUI   drawingUI(Vector2f(200, 50));					// draws the UI for the drawing canvas
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
 	fstream file;

@@ -12,9 +12,19 @@ using namespace sf;
 class ShapeMgr
 {
 private:
+
 	
-public:
-	vector <DrawingShape*> shapeHolder;
+
+public:	
+	
+vector <DrawingShape*> shapeHolder; // this is the vector that holds all the DrawingShapes
+
+//================================================================================
+// addShape: recieves Vector2f, ShapeEnum, and Color. Then it adds a DrawingShape to 
+// the vector via the push_back function
+// parameters: Vector2f, ShapeEnum and Color
+// return type: void
+//================================================================================
 
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
@@ -32,10 +42,13 @@ public:
 			newSquare = new square(pos, color, whichShape);
 			shapeHolder.push_back(newSquare);
 		}
-
-
-		
 	}
+
+//= ==============================================================================
+// outputFile: recieves fstream from the main() and writes data to the binary file 
+// parameters: fstream
+// return type: void
+//================================================================================
 	void outputFile(fstream &outputFile1)
 	{
 		for (int x = 0; x < shapeHolder.size(); x++)
@@ -45,6 +58,12 @@ public:
 		
 	}
 
+//= ==============================================================================
+// inputFile: recieves fstream from the main() and reads data from the binary file 
+// into the shape-holding vector
+// parameters: fstream
+// return type: void
+//================================================================================
 	void inputFile(fstream &inputFile1)
 	{
 		int tempColor = 0;
